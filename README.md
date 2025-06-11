@@ -46,11 +46,6 @@ this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ## Estrutura das categorias e cursos
 
-| Medalha               | Critério                                                   | Popup |
-| --------------------- | ---------------------------------------------------------- | ---------- | 
-| 1. Sentinela do Codex | Onde `c.jornada == true and c.completion_percentage > 0` | ... a "Sentinela do Codex" por ter acessado este Codex.... |
-| 2. Maratonista do Conhecimento | 
-
 - diarios - Diários
   - ZL - Campus
     - 527 - Curso
