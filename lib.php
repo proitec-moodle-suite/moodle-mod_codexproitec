@@ -305,6 +305,7 @@ function codexproitec_cm_info_view(cm_info $cm) {
     global $PAGE, $OUTPUT, $COURSE;
     
     $data = [
+        "meta_alcancada" => true,
     ];
 
     $content = $OUTPUT->render_from_template('mod_codexproitec/activitycard', $data);

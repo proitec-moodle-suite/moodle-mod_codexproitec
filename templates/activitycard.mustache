@@ -49,6 +49,22 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+.activity.modtype_codexproitec dl {
+    display: flex
+;
+}
 </style>
 
-escreva aqui o conteúdo do codex
+<dl>
+    <dt>
+        <img src="{{wwwroot}}/mod/codexproitec/pix/livro.png" {{^meta_alcancada}} class="opaco" {{/meta_alcancada}} />
+    </dt>
+    <dd>
+        {{#meta_alcancada}}
+            <a href="">Baixe seu codex</a>
+        {{/meta_alcancada}}
+        {{^meta_alcancada}}
+            Você não alcançou a meta.
+        {{/meta_alcancada}}
+    </dd>
+</dl>
