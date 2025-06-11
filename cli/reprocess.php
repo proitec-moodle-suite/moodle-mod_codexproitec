@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * CLI script for mod_grimorioproitec.
+ * CLI script for mod_codexproitec.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @subpackage  cli
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -38,7 +38,7 @@ list($options, $unrecognized) = cli_get_params([
 
 $help =
 "
-Help message for mod_grimorioproitec cli script.
+Help message for mod_codexproitec cli script.
 
 Please include a list of options and associated actions.
 

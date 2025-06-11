@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * The main mod_grimorioproitec configuration form.
+ * The main mod_codexproitec configuration form.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,11 +29,11 @@ require_once($CFG->dirroot.'/course/moodleform_mod.php');
 /**
  * Module instance settings form.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mod_grimorioproitec_mod_form extends moodleform_mod {
+class mod_codexproitec_mod_form extends moodleform_mod {
 
     /**
      * Defines forms elements
@@ -47,7 +47,7 @@ class mod_grimorioproitec_mod_form extends moodleform_mod {
         $mform->addElement('header', 'general', get_string('general', 'form'));
 
         // Adding the standard "name" field.
-        $mform->addElement('text', 'name', get_string('grimorioproitecname', 'mod_grimorioproitec'), ['size' => '64']);
+        $mform->addElement('text', 'name', get_string('codexproitecname', 'mod_codexproitec'), ['size' => '64']);
 
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
@@ -57,7 +57,7 @@ class mod_grimorioproitec_mod_form extends moodleform_mod {
 
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
-        $mform->addHelpButton('name', 'grimorioproitecname', 'mod_grimorioproitec');
+        $mform->addHelpButton('name', 'codexproitecname', 'mod_codexproitec');
 
         // Adding the standard "intro" and "introformat" fields.
         if ($CFG->branch >= 29) {
@@ -66,10 +66,10 @@ class mod_grimorioproitec_mod_form extends moodleform_mod {
             $this->add_intro_editor();
         }
 
-        // Adding the rest of mod_grimorioproitec settings, spreading all them into this fieldset
+        // Adding the rest of mod_codexproitec settings, spreading all them into this fieldset
         // ... or adding more fieldsets ('header' elements) if needed for better logic.
-        $mform->addElement('static', 'label1', 'grimorioproitecsettings', get_string('grimorioproitecsettings', 'mod_grimorioproitec'));
-        $mform->addElement('header', 'grimorioproitecfieldset', get_string('grimorioproitecfieldset', 'mod_grimorioproitec'));
+        $mform->addElement('static', 'label1', 'codexproitecsettings', get_string('codexproitecsettings', 'mod_codexproitec'));
+        $mform->addElement('header', 'codexproitecfieldset', get_string('codexproitecfieldset', 'mod_codexproitec'));
 
         // Add standard grading elements.
         $this->standard_grading_coursemodule_elements();

@@ -17,7 +17,7 @@
 /**
  * Mobile addons are declared here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,5 +26,5 @@ defined('MOODLE_INTERNAL') || die();
 
 $addons = [
 
-    'mod_grimorioproitec' => [],
+    'mod_codexproitec' => [],
 ];

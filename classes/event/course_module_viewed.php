@@ -14,12 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_grimorioproitec\event;
+namespace mod_codexproitec\event;
 
 /**
- * The mod_grimorioproitec activity viewed event.
+ * The mod_codexproitec activity viewed event.
  *
- * @package   mod_grimorioproitec
+ * @package   mod_codexproitec
  * @copyright 2010 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,7 +31,7 @@ class course_module_viewed extends \core\event\course_module_viewed {
     protected function init() {
         $this->data['crud'] = 'r';
         $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
-        $this->data['objecttable'] = 'grimorioproitec';
+        $this->data['objecttable'] = 'codexproitec';
     }
 
     /**
@@ -40,6 +40,6 @@ class course_module_viewed extends \core\event\course_module_viewed {
      * @return array
      */
     public static function get_objectid_mapping() {
-        return ['db' => 'grimorioproitec', 'restore' => 'grimorioproitec'];
+        return ['db' => 'codexproitec', 'restore' => 'codexproitec'];
     }
 }

@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Prints an instance of mod_grimorioproitec.
+ * Prints an instance of mod_codexproitec.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,28 +32,28 @@ $id = optional_param('id', 0, PARAM_INT);
 $m = optional_param('m', 0, PARAM_INT);
 
 if ($id) {
-    $cm = get_coursemodule_from_id('grimorioproitec', $id, 0, false, MUST_EXIST);
+    $cm = get_coursemodule_from_id('codexproitec', $id, 0, false, MUST_EXIST);
     $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
-    $moduleinstance = $DB->get_record('grimorioproitec', ['id' => $cm->instance], '*', MUST_EXIST);
+    $moduleinstance = $DB->get_record('codexproitec', ['id' => $cm->instance], '*', MUST_EXIST);
 } else {
-    $moduleinstance = $DB->get_record('grimorioproitec', ['id' => $m], '*', MUST_EXIST);
+    $moduleinstance = $DB->get_record('codexproitec', ['id' => $m], '*', MUST_EXIST);
     $course = $DB->get_record('course', ['id' => $moduleinstance->course], '*', MUST_EXIST);
-    $cm = get_coursemodule_from_instance('grimorioproitec', $moduleinstance->id, $course->id, false, MUST_EXIST);
+    $cm = get_coursemodule_from_instance('codexproitec', $moduleinstance->id, $course->id, false, MUST_EXIST);
 }
 
 require_login($course, true, $cm);
 
 $modulecontext = context_module::instance($cm->id);
 
-$event = \mod_grimorioproitec\event\course_module_viewed::create([
+$event = \mod_codexproitec\event\course_module_viewed::create([
     'objectid' => $moduleinstance->id,
     'context' => $modulecontext,
 ]);
 $event->add_record_snapshot('course', $course);
-$event->add_record_snapshot('grimorioproitec', $moduleinstance);
+$event->add_record_snapshot('codexproitec', $moduleinstance);
 $event->trigger();
 
-$PAGE->set_url('/mod/grimorioproitec/view.php', ['id' => $cm->id]);
+$PAGE->set_url('/mod/codexproitec/view.php', ['id' => $cm->id]);
 $PAGE->set_title(format_string($moduleinstance->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($modulecontext);

@@ -17,7 +17,7 @@
 /**
  * Plugin upgrade steps are defined here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @category    upgrade
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
 require_once(__DIR__.'/upgradelib.php');
 
 /**
- * Execute mod_grimorioproitec upgrade from the given old version.
+ * Execute mod_codexproitec upgrade from the given old version.
  *
  * @param int $oldversion
  * @return bool
  */
-function xmldb_grimorioproitec_upgrade($oldversion) {
+function xmldb_codexproitec_upgrade($oldversion) {
     global $DB;
 
     $dbman = $DB->get_manager();

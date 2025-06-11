@@ -13,10 +13,10 @@
 ##
 ---
 ## Frankenstyle component name.
-component: mod_grimorioproitec
+component: mod_codexproitec
 
 ## Human readable name of the plugin.
-name: Grimório Proitec
+name: Codex Proitec
 
 ## Human readable release number.
 release: "0.1.0"
@@ -360,14 +360,14 @@ cli_scripts:
 observers:
   - eventname: \core\event\course_module_completion_updated
     ## The callback creates the file classes/observer_one.php. The namespace for the file is 'local_test'.
-    callback: \mod_grimorioproitec\observers\observers::course_module_completion_updated
-    includefile: "/mod/grimorioproitec/observers/"
+    callback: \mod_codexproitec\observers\observers::course_module_completion_updated
+    includefile: "/mod/codexproitec/observers/"
     priority: 200
     internal: true
 
   - eventname: \core\event\content_viewed
     ## The callback creates the function in locallib.php.
-    callback: mod_grimorioproitec_observer_content_viewed
+    callback: mod_codexproitec_observer_content_viewed
     internal: false
 
 ## Creates event classes. The first class, located at
@@ -383,26 +383,26 @@ events:
 
 ## Creates a list of mobile remote addons at db/mobile.php.
 mobile_addons:
-  - name: 'mod_grimorioproitec'
+  - name: 'mod_codexproitec'
 
 ## Explicitly added strings
 lang_strings:
   - id: modulename
-    text: Grimório Proitec
-  - id: grimorioproitecname
-    text: Grimório Proitec
-  - id: grimorioproitecname_help
-    text: Grimório Proitec
-  - id: grimorioproitecsettings
-    text: Grimório Proitec settings
-  - id: grimorioproitecfieldset
-    text: Grimório Proitec fieldset
-  - id: nogrimorioproitecinstances
-    text: Grimório Proitec instances
+    text: Codex Proitec
+  - id: codexproitecname
+    text: Codex Proitec
+  - id: codexproitecname_help
+    text: Codex Proitec
+  - id: codexproitecsettings
+    text: Codex Proitec settings
+  - id: codexproitecfieldset
+    text: Codex Proitec fieldset
+  - id: nocodexproitecinstances
+    text: Codex Proitec instances
 
     ## Needed for mod plugins.
   - id: modulenameplural
-    text: Grimório Proitec
+    text: Codex Proitec
   - id: modulename_help
     text: Use the newmodule module for...
   - id: newmodulefieldset
@@ -530,4 +530,4 @@ lang_strings:
 
 ## Mustache templates.
 templates:
-  - grimorioproitec
+  - codexproitec

@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Display information about all the mod_grimorioproitec modules in the requested course.
+ * Display information about all the mod_codexproitec modules in the requested course.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,26 +33,26 @@ require_course_login($course);
 
 $coursecontext = context_course::instance($course->id);
 
-$event = \mod_grimorioproitec\event\course_module_instance_list_viewed::create([
+$event = \mod_codexproitec\event\course_module_instance_list_viewed::create([
     'context' => $modulecontext,
 ]);
 $event->add_record_snapshot('course', $course);
 $event->trigger();
 
-$PAGE->set_url('/mod/grimorioproitec/index.php', ['id' => $id]);
+$PAGE->set_url('/mod/codexproitec/index.php', ['id' => $id]);
 $PAGE->set_title(format_string($course->fullname));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($coursecontext);
 
 echo $OUTPUT->header();
 
-$modulenameplural = get_string('modulenameplural', 'mod_grimorioproitec');
+$modulenameplural = get_string('modulenameplural', 'mod_codexproitec');
 echo $OUTPUT->heading($modulenameplural);
 
-$grimorioproitecs = get_all_instances_in_course('grimorioproitec', $course);
+$codexproitecs = get_all_instances_in_course('codexproitec', $course);
 
-if (empty($grimorioproitecs)) {
-    notice(get_string('no$grimorioproitecinstances', 'mod_grimorioproitec'), new moodle_url('/course/view.php', ['id' => $course->id]));
+if (empty($codexproitecs)) {
+    notice(get_string('no$codexproitecinstances', 'mod_codexproitec'), new moodle_url('/course/view.php', ['id' => $course->id]));
 }
 
 $table = new html_table();
@@ -69,20 +69,20 @@ if ($course->format == 'weeks') {
     $table->align = ['left', 'left', 'left'];
 }
 
-foreach ($grimorioproitecs as $grimorioproitec) {
-    if (!$grimorioproitec->visible) {
+foreach ($codexproitecs as $codexproitec) {
+    if (!$codexproitec->visible) {
         $link = html_writer::link(
-            new moodle_url('/mod/grimorioproitec/view.php', ['id' => $grimorioproitec->coursemodule]),
-            format_string($grimorioproitec->name, true),
+            new moodle_url('/mod/codexproitec/view.php', ['id' => $codexproitec->coursemodule]),
+            format_string($codexproitec->name, true),
             ['class' => 'dimmed']);
     } else {
         $link = html_writer::link(
-            new moodle_url('/mod/grimorioproitec/view.php', ['id' => $grimorioproitec->coursemodule]),
-            format_string($grimorioproitec->name, true));
+            new moodle_url('/mod/codexproitec/view.php', ['id' => $codexproitec->coursemodule]),
+            format_string($codexproitec->name, true));
     }
 
     if ($course->format == 'weeks' || $course->format == 'topics') {
-        $table->data[] = [$grimorioproitec->section, $link];
+        $table->data[] = [$codexproitec->section, $link];
     } else {
         $table->data[] = [$link];
     }

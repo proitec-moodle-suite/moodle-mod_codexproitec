@@ -17,7 +17,7 @@
 /**
  * Plugin event observers are registered here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @category    event
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,15 +29,15 @@ $observers = [
 
     [
         'eventname' => '\core\event\course_module_completion_updated',
-        'callback' => '\mod_grimorioproitec\observers\observers::course_module_completion_updated',
-        'includefile' => '/mod/grimorioproitec/observers/',
+        'callback' => '\mod_codexproitec\observers\observers::course_module_completion_updated',
+        'includefile' => '/mod/codexproitec/observers/',
         'priority' => 200,
         'internal' => true,
     ],
 
     [
         'eventname' => '\core\event\content_viewed',
-        'callback' => 'mod_grimorioproitec_observer_content_viewed',
+        'callback' => 'mod_codexproitec_observer_content_viewed',
         'internal' => false,
     ],
 ];

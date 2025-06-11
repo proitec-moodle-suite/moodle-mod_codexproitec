@@ -17,9 +17,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The task that provides a complete restore of mod_grimorioproitec is defined here.
+ * The task that provides a complete restore of mod_codexproitec is defined here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @category    backup
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
 // More information about the backup process: {@link https://docs.moodle.org/dev/Backup_API}.
 // More information about the restore process: {@link https://docs.moodle.org/dev/Restore_API}.
 
-require_once($CFG->dirroot.'//mod/grimorioproitec/backup/moodle2/restore_grimorioproitec_stepslib.php');
+require_once($CFG->dirroot.'//mod/codexproitec/backup/moodle2/restore_codexproitec_stepslib.php');
 
 /**
- * Restore task for mod_grimorioproitec.
+ * Restore task for mod_codexproitec.
  */
-class restore_grimorioproitec_activity_task extends restore_activity_task {
+class restore_codexproitec_activity_task extends restore_activity_task {
 
     /**
      * Defines particular settings that this activity can have.
@@ -48,7 +48,7 @@ class restore_grimorioproitec_activity_task extends restore_activity_task {
      * @return base_step.
      */
     protected function define_my_steps() {
-        $this->add_step(new restore_grimorioproitec_activity_structure_step('grimorioproitec_structure', 'grimorioproitec.xml'));
+        $this->add_step(new restore_codexproitec_activity_structure_step('codexproitec_structure', 'codexproitec.xml'));
     }
 
     /**
@@ -79,7 +79,7 @@ class restore_grimorioproitec_activity_task extends restore_activity_task {
 
     /**
      * Defines the restore log rules that will be applied by the
-     * {@see restore_logs_processor} when restoring mod_grimorioproitec logs. It
+     * {@see restore_logs_processor} when restoring mod_codexproitec logs. It
      * must return one array of {@see restore_log_rule} objects.
      *
      * @return array.

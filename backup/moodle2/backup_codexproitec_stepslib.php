@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * All the steps to restore mod_grimorioproitec are defined here.
+ * Backup steps for mod_codexproitec are defined here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @category    backup
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,37 +27,36 @@
 // More information about the restore process: {@link https://docs.moodle.org/dev/Restore_API}.
 
 /**
- * Defines the structure step to restore one mod_grimorioproitec activity.
+ * Define the complete structure for backup, with file and id annotations.
  */
-class restore_grimorioproitec_activity_structure_step extends restore_activity_structure_step {
+class backup_codexproitec_activity_structure_step extends backup_activity_structure_step {
 
     /**
-     * Defines the structure to be restored.
+     * Defines the structure of the resulting xml file.
      *
-     * @return restore_path_element[].
+     * @return backup_nested_element The structure wrapped by the common 'activity' element.
      */
     protected function define_structure() {
-        $paths = [];
         $userinfo = $this->get_setting_value('userinfo');
 
-        $paths[] = new restore_path_element('elt', '/path/to/file');
+        // Replace with the attributes and final elements that the element will handle.
+        $attributes = null;
+        $finalelements = null;
+        $root = new backup_nested_element('mod_codexproitec', $attributes, $finalelements);
 
-        return $this->prepare_activity_structure($paths);
-    }
+        // Replace with the attributes and final elements that the element will handle.
+        $attributes = null;
+        $finalelements = null;
+        $elt = new backup_nested_element('elt', $attributes, $finalelements);
 
-    /**
-     * Processes the elt restore data.
-     *
-     * @param array $data Parsed element data.
-     */
-    protected function process_elt($data) {
-        return;
-    }
+        // Build the tree with these elements with $root as the root of the backup tree.
 
-    /**
-     * Defines post-execution actions.
-     */
-    protected function after_execute() {
-        return;
+        // Define the source tables for the elements.
+
+        // Define id annotations.
+
+        // Define file annotations.
+
+        return $this->prepare_activity_structure($root);
     }
 }

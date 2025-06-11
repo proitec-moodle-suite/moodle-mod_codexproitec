@@ -1,4 +1,4 @@
-# Grimório Proitec #
+# Codex Proitec #
 
 TO-DO Describe the plugin shortly here.
 
@@ -16,7 +16,7 @@ TO-DO Provide more detailed description here.
 
 The plugin can be also installed by putting the contents of this directory to
 
-    {your/moodle/dirroot}/mod/grimorioproitec
+    {your/moodle/dirroot}/mod/codexproitec
 
 Afterwards, log in to your Moodle site as an admin and go to _Site administration >
 Notifications_ to complete the installation.
@@ -45,6 +45,11 @@ this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 ## Estrutura das categorias e cursos
+
+| Medalha               | Critério                                                   | Popup |
+| --------------------- | ---------------------------------------------------------- | ---------- | 
+| 1. Sentinela do Codex | Onde `c.jornada == true and c.completion_percentage > 0` | ... a "Sentinela do Codex" por ter acessado este Codex.... |
+| 2. Maratonista do Conhecimento | 
 
 - diarios - Diários
   - ZL - Campus

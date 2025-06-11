@@ -17,7 +17,7 @@
 /**
  * Plugin custom settings are defined here.
  *
- * @package     mod_grimorioproitec
+ * @package     mod_codexproitec
  * @category    backup
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
