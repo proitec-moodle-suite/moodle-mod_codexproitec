@@ -29,11 +29,69 @@
     * attributes Array of name / value pairs.
 
     Example context (json):
+
+    Exemplo, conforme `get_courses_progress_as_dict`:
     {
-        "attributes": [
-            { "name": "src", "value": "https://example.com/imgs/logo.png" },
-            { "name": "class", "value": "iconsmall" }
-        ]
+       "jornada": {
+         "course_id": 0,
+         "course_idnumber": "...",
+         "course_fullname": "...",
+         "course_shortname": "...",
+         "course_alias": "...",
+         "course_subtitle": "...",
+         "course_image_url": "...",
+         "total_modules": 0,
+         "completed_modules": 0,
+         "completion_percentage": 0,
+         "disciplina": "FIC.1198",
+         "iniciada": 0,
+         "concluida": 0,
+       },
+       "etica": {
+         "course_id": 0,
+         "course_idnumber": "...",
+         "course_fullname": "...",
+         "course_shortname": "...",
+         "course_alias": "...",
+         "course_subtitle": "...",
+         "course_image_url": "...",
+         "total_modules": 0,
+         "completed_modules": 0,
+         "completion_percentage": 0,
+         "disciplina": "FIC.1197",
+         "iniciada": 0,
+         "concluida": 0,
+       },
+       "matematica": {
+         "course_id": 0,
+         "course_idnumber": "...",
+         "course_fullname": "...",
+         "course_shortname": "...",
+         "course_alias": "...",
+         "course_subtitle": "...",
+         "course_image_url": "...",
+         "total_modules": 0,
+         "completed_modules": 0,
+         "completion_percentage": 0,
+         "disciplina": "FIC.1196",
+         "iniciada": 0,
+         "concluida": 0,
+       },
+       "portugues": {
+         "course_id": 0,
+         "course_idnumber": "...",
+         "course_fullname": "...",
+         "course_shortname": "...",
+         "course_alias": "...",
+         "course_subtitle": "...",
+         "course_image_url": "...",
+         "total_modules": 0,
+         "completed_modules": 0,
+         "completion_percentage": 0,
+         "disciplina": "FIC.1195",
+         "iniciada": 0,
+         "concluida": 0,
+       },
     }
 }}
 
@@ -49,22 +107,25 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
-.activity.modtype_codexproitec dl {
-    display: flex
-;
 }
 </style>
 
-<dl>
-    <dt>
-        <img src="{{wwwroot}}/mod/codexproitec/pix/livro.png" {{^meta_alcancada}} class="opaco" {{/meta_alcancada}} />
-    </dt>
-    <dd>
+<div>
+    <center>
+        {{{ svg_codecxproitec }}}
+    </center>
+    <center>
         {{#meta_alcancada}}
-            <a href="">Baixe seu codex</a>
+            <h3>Desbloqueie o Codex</h3>
+            <p>Você alcançou a meta de estudos e pode desbloear seu codex.</p>
+            <p>Para baixar, clique nos botões abaixo.</p>
+            <p><a href="{{wwwroot}}/mod/codexproitec/assets/jornada.pdf" class="btn btn-secondary">Jornada</a></p>
+            <p><a href="{{wwwroot}}/mod/codexproitec/assets/etica.pdf" class="btn btn-secondary">Ética e cidadania</a></p>
+            <p><a href="{{wwwroot}}/mod/codexproitec/assets/matematica.pdf" class="btn btn-secondary">Matemática</a></p>
+            <p><a href="{{wwwroot}}/mod/codexproitec/assets/portugues.pdf" class="btn btn-secondary">Língua portuguesa</a></p>
         {{/meta_alcancada}}
         {{^meta_alcancada}}
-            Você não alcançou a meta.
+            Colete as quatro pedras para conseguir abrir o livro.
         {{/meta_alcancada}}
-    </dd>
-</dl>
+    </center>
+</div>

@@ -29,7 +29,8 @@ require_once(__DIR__ . '/../medalhasproitec/lib.php');
  * @param string $feature Constant representing the feature.
  * @return true | null True if the feature is supported, null otherwise.
  */
-function codexproitec_supports($feature) {
+function codexproitec_supports($feature)
+{
     return match ($feature) {
         FEATURE_MOD_ARCHETYPE => MOD_ARCHETYPE_RESOURCE,
         FEATURE_GROUPS => false,
@@ -59,7 +60,8 @@ function codexproitec_supports($feature) {
  * @param mod_codexproitec_mod_form $mform The form.
  * @return int The id of the newly inserted record.
  */
-function codexproitec_add_instance($moduleinstance, $mform = null) {
+function codexproitec_add_instance($moduleinstance, $mform = null)
+{
     global $DB;
 
     $moduleinstance->timecreated = time();
@@ -79,7 +81,8 @@ function codexproitec_add_instance($moduleinstance, $mform = null) {
  * @param mod_codexproitec_mod_form $mform The form.
  * @return bool True if successful, false otherwise.
  */
-function codexproitec_update_instance($moduleinstance, $mform = null) {
+function codexproitec_update_instance($moduleinstance, $mform = null)
+{
     global $DB;
 
     $moduleinstance->timemodified = time();
@@ -94,7 +97,8 @@ function codexproitec_update_instance($moduleinstance, $mform = null) {
  * @param int $id Id of the module instance.
  * @return bool True if successful, false on failure.
  */
-function codexproitec_delete_instance($id) {
+function codexproitec_delete_instance($id)
+{
     global $DB;
 
     $exists = $DB->get_record('codexproitec', ['id' => $id]);
@@ -117,7 +121,8 @@ function codexproitec_delete_instance($id) {
  * @param int $scaleid ID of the scale.
  * @return bool True if the scale is used by the given mod_codexproitec instance.
  */
-function codexproitec_scale_used($moduleinstanceid, $scaleid) {
+function codexproitec_scale_used($moduleinstanceid, $scaleid)
+{
     global $DB;
 
     if ($scaleid && $DB->record_exists('codexproitec', ['id' => $moduleinstanceid, 'grade' => -$scaleid])) {
@@ -135,7 +140,8 @@ function codexproitec_scale_used($moduleinstanceid, $scaleid) {
  * @param int $scaleid ID of the scale.
  * @return bool True if the scale is used by any mod_codexproitec instance.
  */
-function codexproitec_scale_used_anywhere($scaleid) {
+function codexproitec_scale_used_anywhere($scaleid)
+{
     global $DB;
 
     if ($scaleid && $DB->record_exists('codexproitec', ['grade' => -$scaleid])) {
@@ -154,9 +160,10 @@ function codexproitec_scale_used_anywhere($scaleid) {
  * @param bool $reset Reset grades in the gradebook.
  * @return void.
  */
-function codexproitec_grade_item_update($moduleinstance, $reset=false) {
+function codexproitec_grade_item_update($moduleinstance, $reset = false)
+{
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     $item = [];
     $item['itemname'] = clean_param($moduleinstance->name, PARAM_NOTAGS);
@@ -185,12 +192,21 @@ function codexproitec_grade_item_update($moduleinstance, $reset=false) {
  * @param stdClass $moduleinstance Instance object.
  * @return grade_item.
  */
-function codexproitec_grade_item_delete($moduleinstance) {
+function codexproitec_grade_item_delete($moduleinstance)
+{
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
-    return grade_update('/mod/codexproitec', $moduleinstance->course, 'mod', 'codexproitec',
-                        $moduleinstance->id, 0, null, ['deleted' => 1]);
+    return grade_update(
+        '/mod/codexproitec',
+        $moduleinstance->course,
+        'mod',
+        'codexproitec',
+        $moduleinstance->id,
+        0,
+        null,
+        ['deleted' => 1]
+    );
 }
 
 /**
@@ -201,9 +217,10 @@ function codexproitec_grade_item_delete($moduleinstance) {
  * @param stdClass $moduleinstance Instance object with extra cmidnumber and modname property.
  * @param int $userid Update grade of specific user only, 0 means all participants.
  */
-function codexproitec_update_grades($moduleinstance, $userid = 0) {
+function codexproitec_update_grades($moduleinstance, $userid = 0)
+{
     global $CFG, $DB;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     // Populate array of grade objects indexed by userid.
     $grades = [];
@@ -224,7 +241,8 @@ function codexproitec_update_grades($moduleinstance, $userid = 0) {
  * @param stdClass $context
  * @return string[].
  */
-function codexproitec_get_file_areas($course, $cm, $context) {
+function codexproitec_get_file_areas($course, $cm, $context)
+{
     return [];
 }
 
@@ -245,7 +263,8 @@ function codexproitec_get_file_areas($course, $cm, $context) {
  * @param string $filename
  * @return file_info Instance or null if not found.
  */
-function codexproitec_get_file_info($browser, $areas, $course, $cm, $context, $filearea, $itemid, $filepath, $filename) {
+function codexproitec_get_file_info($browser, $areas, $course, $cm, $context, $filearea, $itemid, $filepath, $filename)
+{
     return null;
 }
 
@@ -263,7 +282,8 @@ function codexproitec_get_file_info($browser, $areas, $course, $cm, $context, $f
  * @param bool $forcedownload Whether or not force download.
  * @param array $options Additional options affecting the file serving.
  */
-function codexproitec_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options = []) {
+function codexproitec_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options = [])
+{
     global $DB, $CFG;
 
     if ($context->contextlevel != CONTEXT_MODULE) {
@@ -284,8 +304,7 @@ function codexproitec_pluginfile($course, $cm, $context, $filearea, $args, $forc
  * @param stdClass $module
  * @param cm_info $cm
  */
-function codexproitec_extend_navigation($codexproitecnode, $course, $module, $cm) {
-}
+function codexproitec_extend_navigation($codexproitecnode, $course, $module, $cm) {}
 
 /**
  * Extends the settings navigation with the mod_codexproitec settings.
@@ -296,19 +315,29 @@ function codexproitec_extend_navigation($codexproitecnode, $course, $module, $cm
  * @param settings_navigation $settingsnav {@see settings_navigation}
  * @param navigation_node $codexproitecnode {@see navigation_node}
  */
-function codexproitec_extend_settings_navigation($settingsnav, $codexproitecnode = null) {
-}
+function codexproitec_extend_settings_navigation($settingsnav, $codexproitecnode = null) {}
 
 
 
 
-function codexproitec_cm_info_view(cm_info $cm) {
+function codexproitec_cm_info_view(cm_info $cm)
+{
     global $PAGE, $OUTPUT, $COURSE;
-    
-    $data = [
-        "meta_alcancada" => true,
-    ];
 
+
+    $data = get_courses_progress_as_dict();
+    $data["jornada"]->alcancada = $data["jornada"]->concluida == 100;
+    $data["etica"]->alcancada = $data["etica"]->concluida == 100;
+    $data["matematica"]->alcancada = $data["matematica"]->concluida == 100;
+    $data["portugues"]->alcancada = $data["portugues"]->concluida == 100;
+
+    $data["jornada"]->alcancada = true;
+    $data["matematica"]->alcancada = true;
+    $data["etica"]->alcancada = true;
+    $data["portugues"]->alcancada = true;
+
+    $data["meta_alcancada"] = $data["jornada"]->alcancada && $data["etica"]->alcancada && $data["matematica"]->alcancada && $data["portugues"]->alcancada;
+    $data["svg_codecxproitec"] = $OUTPUT->render_from_template('mod_codexproitec/codex', $data);
     $content = $OUTPUT->render_from_template('mod_codexproitec/activitycard', $data);
     $cm->set_content($content);
 }
