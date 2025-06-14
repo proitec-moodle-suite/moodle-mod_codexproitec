@@ -331,10 +331,10 @@ function codexproitec_cm_info_view(cm_info $cm)
     $data["matematica"]->alcancada = $data["matematica"]->concluida == 100;
     $data["portugues"]->alcancada = $data["portugues"]->concluida == 100;
 
-    $data["jornada"]->alcancada = true;
-    $data["matematica"]->alcancada = true;
-    $data["etica"]->alcancada = true;
-    $data["portugues"]->alcancada = true;
+    // $data["jornada"]->alcancada = true;
+    // $data["matematica"]->alcancada = true;
+    // $data["etica"]->alcancada = true;
+    // $data["portugues"]->alcancada = true;
 
     $data["meta_alcancada"] = $data["jornada"]->alcancada && $data["etica"]->alcancada && $data["matematica"]->alcancada && $data["portugues"]->alcancada;
     $data["svg_codecxproitec"] = $OUTPUT->render_from_template('mod_codexproitec/codex', $data);
