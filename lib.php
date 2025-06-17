@@ -322,7 +322,7 @@ function codexproitec_extend_settings_navigation($settingsnav, $codexproitecnode
 
 function codexproitec_cm_info_view(cm_info $cm)
 {
-    global $PAGE, $OUTPUT, $COURSE;
+    global $OUTPUT;
 
 
     $data = get_courses_progress_as_dict();
@@ -339,5 +339,5 @@ function codexproitec_cm_info_view(cm_info $cm)
     $data["meta_alcancada"] = $data["jornada"]->alcancada && $data["etica"]->alcancada && $data["matematica"]->alcancada && $data["portugues"]->alcancada;
     $data["svg_codecxproitec"] = $OUTPUT->render_from_template('mod_codexproitec/codex', $data);
     $content = $OUTPUT->render_from_template('mod_codexproitec/activitycard', $data);
-    $cm->set_content($content);
+    $cm->set_content($content, true);
 }
