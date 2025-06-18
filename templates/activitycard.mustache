@@ -34,9 +34,9 @@
     {
        "jornada": {
          "course_id": 0,
-         "course_idnumber": "...",
-         "course_fullname": "...",
-         "course_shortname": "...",
+         "course_idnumber": "20242.1.527.1E.FIC.1197#564322",
+         "course_fullname": "Seminário de Integração",
+         "course_shortname": "20242.1.527.1E.FIC.1197#564322"
          "course_alias": "...",
          "course_subtitle": "...",
          "course_image_url": "...",
@@ -49,9 +49,9 @@
        },
        "etica": {
          "course_id": 0,
-         "course_idnumber": "...",
-         "course_fullname": "...",
-         "course_shortname": "...",
+         "course_idnumber": "20242.1.527.1E.FIC.1197#564322",
+         "course_fullname": "Ética e Cidadania",
+         "course_shortname": "20242.1.527.1E.FIC.1197#564322"
          "course_alias": "...",
          "course_subtitle": "...",
          "course_image_url": "...",
@@ -64,9 +64,9 @@
        },
        "matematica": {
          "course_id": 0,
-         "course_idnumber": "...",
-         "course_fullname": "...",
-         "course_shortname": "...",
+         "course_idnumber": "20242.1.527.1E.FIC.1196#564322",
+         "course_fullname": "Matemática",
+         "course_shortname": "20242.1.527.1E.FIC.1196#564322"
          "course_alias": "...",
          "course_subtitle": "...",
          "course_image_url": "...",
@@ -79,9 +79,9 @@
        },
        "portugues": {
          "course_id": 0,
-         "course_idnumber": "...",
-         "course_fullname": "...",
-         "course_shortname": "...",
+         "course_idnumber": "20242.1.527.1E.FIC.1195#564322",
+         "course_fullname": "Língua Portuguesa",
+         "course_shortname": "20242.1.527.1E.FIC.1195#564322"
          "course_alias": "...",
          "course_subtitle": "...",
          "course_image_url": "...",
@@ -107,25 +107,46 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+.codex_fechado {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #1D1D1B;
+    font-family: "Montserrat", sans-serif;
 }
 </style>
 
+{{#jornada.iniciada}}
 <div>
-    <center>
-        {{{ svg_codecxproitec }}}
-    </center>
-    <center>
-        {{#meta_alcancada}}
-            <h3>Desbloqueie o Codex</h3>
-            <p>Você alcançou a meta de estudos e pode desbloear seu codex.</p>
-            <p>Para baixar, clique nos botões abaixo.</p>
-            <p><a href="{{wwwroot}}/mod/codexproitec/assets/jornada.pdf" class="btn btn-secondary">Jornada</a></p>
-            <p><a href="{{wwwroot}}/mod/codexproitec/assets/etica.pdf" class="btn btn-secondary">Ética e cidadania</a></p>
-            <p><a href="{{wwwroot}}/mod/codexproitec/assets/matematica.pdf" class="btn btn-secondary">Matemática</a></p>
-            <p><a href="{{wwwroot}}/mod/codexproitec/assets/portugues.pdf" class="btn btn-secondary">Língua portuguesa</a></p>
-        {{/meta_alcancada}}
-        {{^meta_alcancada}}
-            Colete as quatro pedras para conseguir abrir o Códex.
-        {{/meta_alcancada}}
-    </center>
+    {{#meta_alcancada}}
+    <video id="codexproitec_video_portal" controls width="100%" poster="{{wwwroot}}/mod/codexproitec/assets/capa.png">
+        <source src="{{wwwroot}}/mod/codexproitec/assets/portal.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+    <script>
+        const video = document.getElementById('codexproitec_video_portal');
+      
+        video.addEventListener('ended', () => {
+            video.style.display = 'none';
+            document.getElementById('codexproitec_mensagem1').style.display = 'block';
+        });
+    </script>
+    <div id="codexproitec_mensagem1" style="display: none;">
+        <center>
+            {{{ svg_codecxproitec }}}
+        </center>
+        <center>
+            <h3>Codex desbloqueado</h3>
+            <a href="{{wwwroot}}/mod/codexproitec/assets/codex.pdf" class="btn btn-primary">Baixe seu prêmio, campeã(o)!</a>
+        </center>
+    </div>
+    {{/meta_alcancada}}
+    {{^meta_alcancada}}
+        <center>
+            {{{ svg_codecxproitec }}}
+        </center>
+        <center>
+            <p class="codex_fechado">Colete as quatro pedras para conseguir abrir o Codex.</p>           
+        </center>
+    {{/meta_alcancada}}
 </div>
+{{/jornada.iniciada}}

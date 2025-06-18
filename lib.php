@@ -326,17 +326,13 @@ function codexproitec_cm_info_view(cm_info $cm)
 
 
     $data = get_courses_progress_as_dict();
-    $data["jornada"]->alcancada = $data["jornada"]->concluida == 100;
-    $data["etica"]->alcancada = $data["etica"]->concluida == 100;
-    $data["matematica"]->alcancada = $data["matematica"]->concluida == 100;
-    $data["portugues"]->alcancada = $data["portugues"]->concluida == 100;
 
-    // $data["jornada"]->alcancada = true;
-    // $data["matematica"]->alcancada = true;
-    // $data["etica"]->alcancada = true;
-    // $data["portugues"]->alcancada = true;
+    // $data["jornada"]->concluida = true;
+    // $data["matematica"]->concluida = true;
+    // $data["etica"]->concluida = true;
+    // $data["portugues"]->concluida = true;
 
-    $data["meta_alcancada"] = $data["jornada"]->alcancada && $data["etica"]->alcancada && $data["matematica"]->alcancada && $data["portugues"]->alcancada;
+    $data["meta_alcancada"] = $data["jornada"]->concluida && $data["etica"]->concluida && $data["matematica"]->concluida && $data["portugues"]->concluida;
     $data["svg_codecxproitec"] = $OUTPUT->render_from_template('mod_codexproitec/codex', $data);
     $content = $OUTPUT->render_from_template('mod_codexproitec/activitycard', $data);
     $cm->set_content($content, true);
