@@ -40,14 +40,14 @@ class backup_codexproitec_activity_structure_step extends backup_activity_struct
         $userinfo = $this->get_setting_value('userinfo');
 
         // Replace with the attributes and final elements that the element will handle.
-        $attributes = null;
-        $finalelements = null;
-        $root = new backup_nested_element('mod_codexproitec', $attributes, $finalelements);
+        $root = new backup_nested_element('codexproitec', ['id'], [
+            'course', 'name', 'intro', 'introformat', 'timecreated', 'timemodified'
+        ]);
 
-        // Replace with the attributes and final elements that the element will handle.
-        $attributes = null;
-        $finalelements = null;
-        $elt = new backup_nested_element('elt', $attributes, $finalelements);
+        $root->set_source_table('codexproitec', ['id' => backup::VAR_ACTIVITYID]);
+
+        $root->annotate_files('codexproitec', 'intro', null);
+
 
         // Build the tree with these elements with $root as the root of the backup tree.
 

@@ -40,7 +40,7 @@ class restore_codexproitec_activity_structure_step extends restore_activity_stru
         $paths = [];
         $userinfo = $this->get_setting_value('userinfo');
 
-        $paths[] = new restore_path_element('elt', '/path/to/file');
+        $paths[] = new restore_path_element('codexproitec', '/activity/codexproitec');
 
         return $this->prepare_activity_structure($paths);
     }
@@ -50,14 +50,23 @@ class restore_codexproitec_activity_structure_step extends restore_activity_stru
      *
      * @param array $data Parsed element data.
      */
-    protected function process_elt($data) {
-        return;
+    protected function process_codexproitec($data) {
+        global $DB;
+
+        $data = (object)$data;
+        $data->course = $this->get_courseid();
+
+        // Insere no banco de dados e armazena o novo ID.
+        $newitemid = $DB->insert_record('codexproitec', $data);
+
+        // Associa o novo ID à atividade restaurada.
+        $this->apply_activity_instance($newitemid);
     }
 
     /**
      * Defines post-execution actions.
      */
     protected function after_execute() {
-        return;
+        $this->add_related_files('codexproitec', 'intro', null);
     }
 }

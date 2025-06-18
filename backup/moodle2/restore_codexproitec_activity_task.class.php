@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 // More information about the backup process: {@link https://docs.moodle.org/dev/Backup_API}.
 // More information about the restore process: {@link https://docs.moodle.org/dev/Restore_API}.
 
-require_once($CFG->dirroot.'//mod/codexproitec/backup/moodle2/restore_codexproitec_stepslib.php');
+require_once($CFG->dirroot.'/mod/codexproitec/backup/moodle2/restore_codexproitec_stepslib.php');
 
 /**
  * Restore task for mod_codexproitec.
@@ -59,7 +59,11 @@ class restore_codexproitec_activity_task extends restore_activity_task {
     public static function define_decode_contents() {
         $contents = [];
 
-        // Define the contents.
+        $contents[] = new restore_decode_content(
+            'codexproitec',              // Nome da tabela.
+            ['intro'],                      // Campos com conteúdo a ser decodificado.
+            'codexproitec'               // Tipo da atividade.
+        );
 
         return $contents;
     }
@@ -72,7 +76,17 @@ class restore_codexproitec_activity_task extends restore_activity_task {
     public static function define_decode_rules() {
         $rules = [];
 
-        // Define the rules.
+        $rules[] = new restore_decode_rule(
+            'codexproitecVIEWBYID',
+            '/mod/codexproitec/view.php?id=$1',
+            'course_module'
+        );
+
+        $rules[] = new restore_decode_rule(
+            'codexproitecINDEX',
+            '/mod/codexproitec/index.php?id=$1',
+            'course'
+        );
 
         return $rules;
     }
