@@ -29,34 +29,33 @@
 /**
  * Define the complete structure for backup, with file and id annotations.
  */
-class backup_codexproitec_activity_structure_step extends backup_activity_structure_step {
+class backup_codexproitec_activity_structure_step extends backup_activity_structure_step
+{
 
     /**
      * Defines the structure of the resulting xml file.
      *
      * @return backup_nested_element The structure wrapped by the common 'activity' element.
      */
-    protected function define_structure() {
-        $userinfo = $this->get_setting_value('userinfo');
+    protected function define_structure()
+    {
+        $codexproitec = new backup_nested_element(
+            'codexproitec',
+            ['id'],
+            [
+                'course',
+                'name',
+                'intro',
+                'introformat',
+                'timecreated',
+                'timemodified'
+            ]
+        );
 
-        // Replace with the attributes and final elements that the element will handle.
-        $root = new backup_nested_element('codexproitec', ['id'], [
-            'course', 'name', 'intro', 'introformat', 'timecreated', 'timemodified'
-        ]);
+        $codexproitec->set_source_table('codexproitec', ['id' => backup::VAR_ACTIVITYID]);
 
-        $root->set_source_table('codexproitec', ['id' => backup::VAR_ACTIVITYID]);
+        $codexproitec->annotate_files('mod_codexproitec', 'intro', null);
 
-        $root->annotate_files('codexproitec', 'intro', null);
-
-
-        // Build the tree with these elements with $root as the root of the backup tree.
-
-        // Define the source tables for the elements.
-
-        // Define id annotations.
-
-        // Define file annotations.
-
-        return $this->prepare_activity_structure($root);
+        return $this->prepare_activity_structure($codexproitec);
     }
 }
