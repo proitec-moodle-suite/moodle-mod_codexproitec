@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/course/moodleform_mod.php');
+require_once($CFG->dirroot . '/course/moodleform_mod.php');
 
 /**
  * Module instance settings form.
@@ -33,12 +33,14 @@ require_once($CFG->dirroot.'/course/moodleform_mod.php');
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mod_codexproitec_mod_form extends moodleform_mod {
+class mod_codexproitec_mod_form extends moodleform_mod
+{
 
     /**
      * Defines forms elements
      */
-    public function definition() {
+    public function definition()
+    {
         global $CFG;
 
         $mform = $this->_form;
@@ -66,10 +68,10 @@ class mod_codexproitec_mod_form extends moodleform_mod {
             $this->add_intro_editor();
         }
 
-        // Adding the rest of mod_codexproitec settings, spreading all them into this fieldset
-        // ... or adding more fieldsets ('header' elements) if needed for better logic.
-        $mform->addElement('static', 'label1', 'codexproitecsettings', get_string('codexproitecsettings', 'mod_codexproitec'));
-        $mform->addElement('header', 'codexproitecfieldset', get_string('codexproitecfieldset', 'mod_codexproitec'));
+        // // Adding the rest of mod_codexproitec settings, spreading all them into this fieldset
+        // // ... or adding more fieldsets ('header' elements) if needed for better logic.
+        // $mform->addElement('static', 'label1', 'codexproitecsettings', get_string('codexproitecsettings', 'mod_codexproitec'));
+        // $mform->addElement('header', 'codexproitecfieldset', get_string('codexproitecfieldset', 'mod_codexproitec'));
 
         // Add standard grading elements.
         $this->standard_grading_coursemodule_elements();
