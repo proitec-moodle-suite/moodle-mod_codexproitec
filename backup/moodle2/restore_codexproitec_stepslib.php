@@ -29,20 +29,21 @@
 /**
  * Defines the structure step to restore one mod_codexproitec activity.
  */
-class restore_codexproitec_activity_structure_step extends restore_activity_structure_step {
+class restore_codexproitec_activity_structure_step extends restore_activity_structure_step
+{
 
     /**
      * Defines the structure to be restored.
      *
      * @return restore_path_element[].
      */
-    protected function define_structure() {
-        $paths = [];
-        $userinfo = $this->get_setting_value('userinfo');
-
-        $paths[] = new restore_path_element('codexproitec', '/activity/codexproitec');
-
-        return $this->prepare_activity_structure($paths);
+    protected function define_structure()
+    {
+        return $this->prepare_activity_structure(
+            [
+                new restore_path_element('codexproitec', '/activity/codexproitec')
+            ]
+        );
     }
 
     /**
@@ -50,7 +51,8 @@ class restore_codexproitec_activity_structure_step extends restore_activity_stru
      *
      * @param array $data Parsed element data.
      */
-    protected function process_codexproitec($data) {
+    protected function process_codexproitec($data)
+    {
         global $DB;
 
         $data = (object)$data;
@@ -66,7 +68,8 @@ class restore_codexproitec_activity_structure_step extends restore_activity_stru
     /**
      * Defines post-execution actions.
      */
-    protected function after_execute() {
-        $this->add_related_files('codexproitec', 'intro', null);
+    protected function after_execute()
+    {
+        $this->add_related_files('mod_codexproitec', 'intro', null);
     }
 }
