@@ -25,10 +25,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_codexproitec';
-$plugin->release = '0.1.11';
-$plugin->version = 2025_06_21_11;
-$plugin->requires = 2022_11_28_06;
+$plugin->release = '0.1.12';
+$plugin->version = 2025062112;
+$plugin->requires = 2022112806;
 $plugin->maturity = MATURITY_RC;
 $plugin->dependencies = [
-    'local_suap' => 2025_06_05_066,
+    'local_suap' => 20250605066,
 ];
