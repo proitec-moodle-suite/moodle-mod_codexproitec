@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_codexproitec';
-$plugin->release = '0.1.12';
-$plugin->version = 2025062112;
+$plugin->release = '0.1.13';
+$plugin->version = 2025062113;
 $plugin->requires = 2022112806;
 $plugin->maturity = MATURITY_RC;
 $plugin->dependencies = [
