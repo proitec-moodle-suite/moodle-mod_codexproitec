@@ -1,58 +1,57 @@
-# Codex Proitec #
+# 📜 Codex ProITEC (`mod_codexproitec`)
 
-TO-DO Describe the plugin shortly here.
+O **Codex ProITEC** é um módulo de atividade de gamificação desenvolvido para o Moodle, responsável por gerenciar a coleção de **Gemas do Conhecimento** e a recompensa final do curso autoinstrucional ProITEC no IFRN.
 
-TO-DO Provide more detailed description here.
+---
 
-## Installing via uploaded ZIP file ##
+## 🌐 Documentação Interativa HTML (`docs/`)
 
-1. Log in to your Moodle site as an admin and go to _Site administration >
-   Plugins > Install plugins_.
-2. Upload the ZIP file with the plugin code. You should only be prompted to add
-   extra details if your plugin type is not automatically detected.
-3. Check the plugin validation report and finish the installation.
+Acesse a documentação técnica rica completa em HTML com imagens do Codex, capas e vetorização das gemas:
+👉 [**Documentação Técnica em HTML (`docs/index.html`)**](docs/index.html)
 
-## Installing manually ##
+---
 
-The plugin can be also installed by putting the contents of this directory to
+## 🚀 Funcionalidades e Mecânica de Jogo
 
-    {your/moodle/dirroot}/mod/codexproitec
+- **O Livro do Codex**: Apresenta ao estudante um livro/interface interativo que reúne o progresso de conquistas no curso.
+- **Coleção de Gemas do Conhecimento**: Conforme o estudante avança nas disciplinas da matriz ProITEC, ele desbloqueia gemas simbólicas de conhecimento.
+- **Desbloqueio da Chave do Codex**: Ao colecionar todas as gemas de conhecimento das quatro disciplinas, o estudante completa a chave que abre o Codex.
+- **Recompensa Final**: Como recompensa pela conclusão do Codex, o sistema libera o **Mapa de Dicas Exclusivo** projetado para auxiliar o estudante a passar no Exame de Seleção do ProITEC.
 
-Afterwards, log in to your Moodle site as an admin and go to _Site administration >
-Notifications_ to complete the installation.
+---
 
-Alternatively, you can run
+## 🎨 Recursos Visuais (`pix/`)
 
-    $ php admin/cli/upgrade.php
+- `codex_grande.png`: Ilustração em alta resolução do Codex fechado/em progresso.
+- `codex_completo.svg`: Gráficos vetoriais do Codex totalmente desbloqueado com suas gemas reluzentes.
+- `livro.png`: Ícone e elemento de interface do livro de conquistas.
 
-to complete the installation from the command line.
+---
 
-## License ##
+## 📥 Instalação
 
-2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
+### Opção 1: Via Interface de Administração do Moodle
+1. Baixe o arquivo `.zip` da release do módulo.
+2. Acesse **Administração do site → Plugins → Instalar plugins** no Moodle.
+3. Faça o upload do arquivo `.zip` e conclua a atualização do banco de dados.
 
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
+### Opção 2: Instalação Manual
+1. Clone o repositório no diretório `mod/codexproitec` da sua instalação Moodle:
+   ```bash
+   cd /caminho/do/seu/moodle/mod
+   git clone git@github.com:proitec-moodle-suite/moodle-mod_codexproitec.git codexproitec
+   ```
+2. Acesse **Administração do site → Notificações** para concluir a instalação.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+---
 
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <https://www.gnu.org/licenses/>.
+## 👥 Autores e Contribuidores
 
+- **Kelson da Costa Medeiros** (<kelson.medeiros@ifrn.edu.br> / <kelsoncm@gmail.com>)
+- **Matheus Mathias Rocha Lúcio de Moraes** (<mathias.matheus76@gmail.com>)
 
-## Estrutura das categorias e cursos
+---
 
-- diarios - Diários
-  - ZL - Campus
-    - 527 - Curso
-        - 527.2024.2 - Período da oferta
-          - 20242.1.527.1E - Turma
-            - **20242.1.527.1E**.`FIC.1198`#*654325* - Seminário de Integração
-            - **20242.1.527.1E**.`FIC.1197`#*654321* - Ética e Cidadania
-            - **20242.1.527.1E**.`FIC.1196`#*654323* - Matemática
-            - **20242.1.527.1E**.`FIC.1195`#*564322* - Língua Portuguesa
+## 📜 Licença
 
+Este plugin é software livre distribuído sob os termos da **GNU General Public License v3.0** (GPL-3.0). Veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
