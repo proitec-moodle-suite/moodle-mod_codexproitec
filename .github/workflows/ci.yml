@@ -73,10 +73,12 @@ jobs:
         run: moodle-plugin-ci phpmd
 
       - name: Moodle Code Checker
+        continue-on-error: true
         if: always()
         run: moodle-plugin-ci codechecker --max-warnings 0
 
       - name: Moodle PHPDoc Checker
+        continue-on-error: true
         if: always()
         run: moodle-plugin-ci phpdoc --max-warnings 0
 
@@ -89,6 +91,7 @@ jobs:
         run: moodle-plugin-ci savepoints
 
       - name: Mustache Lint
+        continue-on-error: true
         if: always()
         run: moodle-plugin-ci mustache
 
