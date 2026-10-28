@@ -14,15 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        # PHP 7.4 (EOL) foi removido: os ramos MOODLE_40x_STABLE atuais usam sintaxe do PHP 8.0.
-        php: ['8.0', '8.1']
-        moodle-branch: ['MOODLE_401_STABLE', 'MOODLE_402_STABLE', 'MOODLE_403_STABLE']
-        database: [pgsql, mariadb]
+        include:
+          - php: '8.3'
+            moodle-branch: 'MOODLE_405_STABLE'
+            database: pgsql
+          - php: '8.3'
+            moodle-branch: 'MOODLE_405_STABLE'
+            database: mariadb
+          - php: '8.4'
+            moodle-branch: 'MOODLE_502_STABLE'
+            database: pgsql
+          - php: '8.4'
+            moodle-branch: 'MOODLE_502_STABLE'
+            database: mariadb
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: plugin
 
@@ -31,16 +41,19 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, xml, zip, gd, curl, intl, soap
+          ini-values: max_input_vars=5000
           coverage: none
 
       - name: Initialise moodle-plugin-ci
         run: |
           composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^4
-          echo $(cd ci && pwd)/vendor/bin >> $GITHUB_PATH
-          echo $(cd ci && pwd)/bin >> $GITHUB_PATH
-          php -d max_input_vars=10000 $(cd ci && pwd)/bin/moodle-plugin-ci install \
-            --plugin ./plugin \
-            --db-host=127.0.0.1
+          echo $(cd ci/bin; pwd) >> $GITHUB_PATH
+          echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
+          sudo locale-gen en_AU.UTF-8
+          echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
+
+      - name: Install moodle-plugin-ci
+        run: moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
@@ -94,7 +107,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -103,7 +116,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
 
       mariadb:
-        image: mariadb:10.6
+        image: mariadb:10.11
         env:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
